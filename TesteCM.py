@@ -13,7 +13,7 @@ while url:
     soup = BeautifulSoup(response.text, 'html.parser')
     quotes = soup.find_all(class_='quote')
 
-    #Grab data from quotes
+    
     for quote in quotes:
         quote_list.append({
             'text': quote.find(class_='text').get_text(),
@@ -21,12 +21,11 @@ while url:
             'bio-link': quote.find('a')['href']
         })
 
-    #Grab next url to scrape - set it to url
+  
     next_btn = soup.find(class_='next')
     url = next_btn.find('a')['href'] if next_btn else None
     
-    # waits two seconds before requesting again - (must be a ninja and not draw attention)
-    #sleep(2)
+   
 
 def write_quotes(quotes):
     with open('quotes.csv', 'w') as file:
