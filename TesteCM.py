@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from csv import DictWriter
 from time import sleep
+import json
 
 base_url = 'http://quotes.toscrape.com/'
 url = '/page/1'
@@ -35,4 +36,5 @@ def write_quotes(quotes):
         for quote in quotes:
             csv_writer.writerow(quote)
 
-write_quotes(quote_list)
+
+print(soup.encode("utf-8"))
